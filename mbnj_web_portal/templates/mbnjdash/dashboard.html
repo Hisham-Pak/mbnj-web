@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends "indexbase.html" %}
+{% block body_block %}
+  <p></p>
+  <div class="container">
+    <h1>{{fname}}'s Dashboard</h1>
+  </div>
+  <div class="container">
+    <div class="jumbotron">
+      <h3>General Announcements:</h3>
+      <p>
+        <ul>
+          <li>Madrassah is following a REGULAR schedule on February 29, 2020</li>
+          <li>Help us improve Madrassah by filling the <a href="#">suggestion form</a></li>
+        </ul>
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="container" id="attchart">
+      <script type="text/javascript">
+      var trace1 = {
+        x: {{ year_list }},
+        y: {{ trace1 }},
+        name: 'Attendance - {{ fname }}',
+        type: 'bar'
+        };
+
+        var trace2 = {
+        x: {{ year_list }},
+        y: {{ trace2 }},
+        name: 'Average - All Students',
+        type: 'bar'
+        };
+
+        var data = [trace1, trace2];
+
+        var layout = {barmode: 'group',
+                      title: 'Attendance'};
+
+        Plotly.newPlot('attchart', data, layout);
+      </script>
+    </div>
+    <div class="container" id="perfchart">
+      <script type="text/javascript">
+        var data = [{
+        values: [19, 26, 35],
+        labels: ['Moezzat', 'Akhbar', 'Fiqeh'],
+        type: 'pie'
+        }];
+
+        var layout = {
+        height: 400,
+        width: 500,
+        title: '1441 Exam 1'
+        };
+
+        Plotly.newPlot('perfchart', data, layout);
+      </script>
+    </div>
+  </div>
+{% endblock %}

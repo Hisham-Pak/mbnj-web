@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% extends "indexbase.html" %}
+{% block body_block %}
+  <p></p>
+  <div class="container">
+    <h1>Attendance</h1>
+  </div>
+  <div class="container">
+    <div class="container">
+      <p>Check box if the student is absent:</p>
+
+    </div>
+    <div>
+      <p>
+        <form method="POST" action="{% url 'mbnjattend:submit' id %}">
+        {% csrf_token %}
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Absent</th>
+                <th>Tardy</th>
+                <th>Partial</th>
+                <th>Informed</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if student %}
+                Number of students: {{ student|length }}
+              {% else %}
+                0 students found
+              {% endif %}
+              {% for z in zipped %}
+                <tr>
+                  <td>
+                    <div>
+                      <label>{{z.0.user.last_name}}, {{z.0.user.first_name}}</label>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="checkbox">
+                      {% if z.1 == "checked" %}
+                        <label><input type="checkbox" name="absent[]" value="{{z.0.id}}" checked="checked"></label>
+                      {% else %}
+                        <label><input type="checkbox" name="absent[]" value="{{z.0.id}}"></label>
+                      {% endif %}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="checkbox">
+                      {% if z.2 == "checked" %}
+                        <label><input type="checkbox" name="tardy[]" value="{{z.0.id}}" checked="checked"></label>
+                      {% else %}
+                        <label><input type="checkbox" name="tardy[]" value="{{z.0.id}}"></label>
+                      {% endif %}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="checkbox">
+                      {% if z.3 == "checked" %}
+                        <label><input type="checkbox" name="partial[]" value="{{z.0.id}}" checked="checked"></label>
+                      {% else %}
+                        <label><input type="checkbox" name="partial[]" value="{{z.0.id}}"></label>
+                      {% endif %}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="checkbox">
+                      {% if z.4 == "checked" %}
+                        <label><input type="checkbox" name="informed[]" value="{{z.0.id}}" checked="checked"></label>
+                      {% else %}
+                        <label><input type="checkbox" name="informed[]" value="{{z.0.id}}"></label>
+                      {% endif %}
+                    </div>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div>
+            <input type="submit" class="btn btn-primary btn-lg" value="Submit">
+            <a href="{% url 'mbnjattend:sel_class' %}" class="btn btn-secondary btn-lg">Cancel</a>
+            <!--<input type="button" class="btn btn-secondary btn-lg" value="Cancel">-->
+          </div>
+        </form>
+      </p>
+    </div>
+  </div>
+{% endblock %}

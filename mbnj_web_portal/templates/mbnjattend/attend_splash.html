@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "indexbase.html" %}
+{% block body_block %}
+  <p></p>
+  <div class="container">
+    <h1>Attendance</h1>
+  </div>
+  <div class="container">
+
+      <div class="container">
+        <label for="sc">Select School Year:</label>
+        <select class="form-control" id="sc" onchange="selectSat()">
+          <option value="none">-- Choose calendar year --</option>
+          {% for y in years %}
+            <option value="{{y}}">{{y}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+  </div>
+{% endblock %}

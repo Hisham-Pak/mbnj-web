@@ -1,0 +1,18 @@
+{% extends "indexbase.html" %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+  <p></p>
+  <div class="container">
+    <h1>Absence Request Form</h1>
+  </div>
+  <div class="container">
+    <div class="jumbotron">
+      <form method="POST">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" class="btn btn-primary" value ="Submit">
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

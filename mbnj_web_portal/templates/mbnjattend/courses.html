@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends "indexbase.html" %}
+{% block body_block %}
+  <p></p>
+  <div class="container">
+    <h1>Attendance</h1>
+  </div>
+  <div class="container">
+    <div class="container">
+      <p>Select class for calendar year {{year}}:</p>
+    </div>
+    <div>
+      <p>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Catalog Number</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if courses %}
+              Number of courses: {{ courses|length }}
+            {% else %}
+              0 courses found
+            {% endif %}
+            {% for c in courses %}
+              <tr>
+                <td><a href="{{c.id}}">{{c.name}}</a></td>
+                <td>{{c.catnum}}</td>
+                <td>{{c.grade}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </p>
+    </div>
+  </div>
+{% endblock %}
