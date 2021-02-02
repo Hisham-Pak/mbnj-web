@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'mbnjweb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ddhe1sph57plu9',
-        'USER': 'jcbydtwebpeocz',
-        'PASSWORD': '37d79f38483c4be2275deacf60db90d7a4bd8dafb841d2cc35618f523d8debb6',
-        'HOST': 'ec2-18-206-84-251.compute-1.amazonaws.com',
+        'NAME': 'XXXXXX',
+        'USER': 'XXXXXX',
+        'PASSWORD': 'XXXXXX',
+        'HOST': 'XXXXXX',
         'PORT': '5432',
     }
 }
